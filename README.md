@@ -1,10 +1,12 @@
-  bp_param_extracter
-=====================================================
+  CNPC Utils 
+=============
 
-Usage
+
+bp_param_extracter
 ------
 
-python  bp_param_extracter.py <bp export file>
+*usage*
+python  bp_param_extracter.py [bp export file]
 
 *input* 
 export json file name
