@@ -1,0 +1,753 @@
+{
+	"cloudClass": "com.bmc.cloud.blueprint.spec.DocumentBundle",
+	"entries": [
+		{
+			"name": "SPSS_CDS_03",
+			"blueprintGuid": "610ef38f-348d-4df9-9ad9-ad984c0aa249",
+			"blueprintDocumentGuid": "998b0817-72f2-483b-a4f7-81b6cf3ed356",
+			"document": {
+				"category": "ServiceBlueprint",
+				"purpose": "ServiceOfferingModel",
+				"author": "zd",
+				"schemaVersion": "4.0",
+				"configurations": [
+					{
+						"functionalModel": {
+							"functionalcomponent": [
+								{
+									"software": [
+										{
+											"productcatalogid": "PDC000000012332",
+											"sequence": 1,
+											"standard": true,
+											"guid": "cedd8aa4-9b19-441d-95eb-50b9cadf0425"
+										}
+									],
+									"guid": "81205f7b-734b-4eb2-8c67-412d6d17a9ec",
+									"name": "DMGR"
+								},
+								{
+									"software": [
+										{
+											"productcatalogid": "PDC000000012342",
+											"sequence": 1,
+											"standard": true,
+											"guid": "bd8e3d96-81f3-4fe5-8cd2-9f54e85c4b69"
+										}
+									],
+									"guid": "8d99bf36-4c52-4203-880e-d72b275c0428",
+									"name": "CDS Cluster"
+								},
+								{
+									"software": [
+										{
+											"productcatalogid": "PDC000000012333",
+											"sequence": 1,
+											"standard": true,
+											"guid": "b4be25fa-30fd-4994-adc7-66c0a368a658"
+										}
+									],
+									"guid": "54a78ef2-4034-432f-8cde-2cb4c7c23d06",
+									"name": "Node01"
+								},
+								{
+									"software": [
+										{
+											"productcatalogid": "PDC000000012341",
+											"sequence": 1,
+											"standard": true,
+											"guid": "d267668d-439f-461b-a250-d8f6d1570840"
+										}
+									],
+									"guid": "2c48bd4f-e98c-45bd-9ac0-2ec17c7fd031",
+									"name": "Node02"
+								}
+							],
+							"guid": "0024f1a6-4144-45d0-badb-cf0759f49ec2"
+						},
+						"deploymentModel": {
+							"resourceset": [
+								{
+									"functionalComponentReferences": [
+										{
+											"type": "functionalcomponent",
+											"objectGuid": "8d99bf36-4c52-4203-880e-d72b275c0428",
+											"guid": "b3cbba22-d2c0-4358-83de-d27973b5998f"
+										},
+										{
+											"type": "functionalcomponent",
+											"objectGuid": "81205f7b-734b-4eb2-8c67-412d6d17a9ec",
+											"guid": "88cd503f-0a28-42d2-a0cf-d5f5c509e422"
+										}
+									],
+									"compute": {
+										"instances": 1,
+										"computecontainer": {
+											"cloudPlatforms": [
+												{
+													"name": "vmware",
+													"installableresources": [
+														"PDC000000012227"
+													],
+													"guid": "8eb9f3b1-823f-448c-8f5b-ae1ec0169868"
+												}
+											],
+											"memory": [
+												{
+													"mb": 8196,
+													"policy": "No Less Than",
+													"guid": "5a89d6e9-2958-4b3a-91f8-77d493e94016"
+												}
+											],
+											"cpus": [
+												{
+													"count": 1,
+													"policy": "No Less Than",
+													"guid": "bc7fb063-4459-498e-9885-b38cba35d7f4"
+												}
+											],
+											"disks": [
+												{
+													"disknumber": 1,
+													"amountmb": 51200,
+													"guid": "f064d190-a57e-416a-a9d1-fd2416a96599"
+												}
+											],
+											"hwarchitecture": "Unknown",
+											"virtual": true,
+											"installsoftware": true,
+											"postdeploymentactions": [
+												{
+													"sequence": 1,
+													"action": "SPSS_AddHostList",
+													"actiontype": "script",
+													"guid": "eacdcb22-3eaa-4d8c-b52a-7df7b976c596"
+												}
+											],
+											"guid": "c96a0eb3-8e78-43b7-b0b3-a37d7d95e4c8",
+											"name": "vmware"
+										},
+										"guid": "88a8aebb-e0a4-4ddc-bc5c-b84a40478cea"
+									},
+									"network": {
+										"nics": [
+											{
+												"isdhcp": false,
+												"nicnumber": 0,
+												"publicip": false,
+												"guid": "0fc9b931-5bc7-4445-9802-7f19edd5aa7c",
+												"tags": [
+													{
+														"tag": "Data",
+														"taggroup": "Network Type"
+													}
+												]
+											}
+										],
+										"guid": "c6f66608-14f6-4528-91e2-7fbaaf17540c"
+									},
+									"guid": "fc56603b-147a-403e-84e1-e904c3f2e23e",
+									"name": "DMGR",
+									"tags": [
+										{
+											"tag": "R1",
+											"taggroup": "ResourceSet"
+										},
+										{
+											"tag": "All",
+											"taggroup": "ResourceSet"
+										}
+									]
+								},
+								{
+									"functionalComponentReferences": [
+										{
+											"type": "functionalcomponent",
+											"objectGuid": "54a78ef2-4034-432f-8cde-2cb4c7c23d06",
+											"guid": "cca18e0d-4a31-4853-838d-8ede3b5208d9"
+										}
+									],
+									"compute": {
+										"instances": 1,
+										"computecontainer": {
+											"cloudPlatforms": [
+												{
+													"name": "vmware",
+													"installableresources": [
+														"PDC000000012227"
+													],
+													"guid": "67d63ed2-bc39-43e3-bab9-17fce8733958"
+												}
+											],
+											"memory": [
+												{
+													"mb": 8196,
+													"policy": "No Less Than",
+													"guid": "d348b7d5-a914-4b24-8739-ccc9619b1e1f"
+												}
+											],
+											"cpus": [
+												{
+													"count": 1,
+													"policy": "No Less Than",
+													"guid": "4bdd785b-5bbc-43bc-a3a2-e429bb226ef9"
+												}
+											],
+											"hwarchitecture": "Unknown",
+											"virtual": true,
+											"installsoftware": true,
+											"postdeploymentactions": [
+												{
+													"sequence": 1,
+													"action": "SPSS_AddHostList",
+													"actiontype": "script",
+													"guid": "c902ab3d-2073-4f3e-8278-12fca0ee367c"
+												}
+											],
+											"guid": "33f9e05a-05d0-4d39-a237-99cedc7fe5d7",
+											"name": "vmware"
+										},
+										"guid": "12c49306-8c80-4cc1-8156-c265a01119eb"
+									},
+									"network": {
+										"nics": [
+											{
+												"isdhcp": false,
+												"nicnumber": 0,
+												"publicip": false,
+												"guid": "d0a031e5-4b9a-4e6f-ac6c-ebcb62146fac",
+												"tags": [
+													{
+														"tag": "Data",
+														"taggroup": "Network Type"
+													}
+												]
+											}
+										],
+										"guid": "42560740-6b96-4af9-bec8-da138cdaac21"
+									},
+									"guid": "e2786f31-49ec-4438-ab7b-082185e615b4",
+									"name": "Node01",
+									"tags": [
+										{
+											"tag": "R2",
+											"taggroup": "ResourceSet"
+										},
+										{
+											"tag": "All",
+											"taggroup": "ResourceSet"
+										}
+									]
+								},
+								{
+									"functionalComponentReferences": [
+										{
+											"type": "functionalcomponent",
+											"objectGuid": "2c48bd4f-e98c-45bd-9ac0-2ec17c7fd031",
+											"guid": "a16f4605-463e-435b-81dc-980de0c9607e"
+										}
+									],
+									"compute": {
+										"instances": 1,
+										"computecontainer": {
+											"cloudPlatforms": [
+												{
+													"name": "vmware",
+													"installableresources": [
+														"PDC000000012227"
+													],
+													"guid": "a55f92a6-220a-4af0-9b45-f8606dd27319"
+												}
+											],
+											"memory": [
+												{
+													"mb": 8196,
+													"policy": "No Less Than",
+													"guid": "1e6799f4-724a-422d-af2b-7518163aa98c"
+												}
+											],
+											"cpus": [
+												{
+													"count": 1,
+													"policy": "No Less Than",
+													"guid": "afd1d256-15ab-46e6-9928-6eb9a77696b3"
+												}
+											],
+											"hwarchitecture": "Unknown",
+											"virtual": true,
+											"installsoftware": true,
+											"postdeploymentactions": [
+												{
+													"sequence": 1,
+													"action": "SPSS_AddHostList",
+													"actiontype": "script",
+													"guid": "219ad385-b1ec-4982-9f66-5e77657e2aa2"
+												}
+											],
+											"guid": "65268306-d708-4cf7-9a63-dedc9f86f6fb",
+											"name": "vmware"
+										},
+										"guid": "a7d182b7-b0c9-4e2f-9e71-117729fd7656"
+									},
+									"network": {
+										"nics": [
+											{
+												"isdhcp": false,
+												"nicnumber": 0,
+												"publicip": false,
+												"guid": "52b605e0-c90e-41ed-8753-a38d5d8bd4c9",
+												"tags": [
+													{
+														"tag": "Data",
+														"taggroup": "Network Type"
+													}
+												]
+											}
+										],
+										"guid": "a25a87e6-ca50-44f7-9d11-5c06529c43de"
+									},
+									"guid": "f10522e6-a382-4d8f-b5a3-c070aa0daa52",
+									"name": "Node02",
+									"tags": [
+										{
+											"tag": "R3",
+											"taggroup": "ResourceSet"
+										},
+										{
+											"tag": "All",
+											"taggroup": "ResourceSet"
+										}
+									]
+								}
+							],
+							"functionalModelReference": {
+								"type": "functionalmodel",
+								"objectGuid": "0024f1a6-4144-45d0-badb-cf0759f49ec2",
+								"guid": "780db648-7d2d-42d6-b43c-3beaa6e3c49b"
+							},
+							"installorder": {
+								"installstep": [
+									{
+										"sequence": 1,
+										"objectReferences": [
+											{
+												"type": "resourceset",
+												"objectGuid": "fc56603b-147a-403e-84e1-e904c3f2e23e",
+												"guid": "a94af912-8834-4cfb-97f6-ae86025ff811"
+											},
+											{
+												"type": "resourceset",
+												"objectGuid": "e2786f31-49ec-4438-ab7b-082185e615b4",
+												"guid": "550f1e56-117c-48a4-b999-78bf5f48796c"
+											},
+											{
+												"type": "resourceset",
+												"objectGuid": "f10522e6-a382-4d8f-b5a3-c070aa0daa52",
+												"guid": "b0c8f784-8837-49b9-ac3a-1cb09b843b85"
+											}
+										],
+										"guid": "6fe6eeee-a037-475c-aff1-a980b9fb4707"
+									},
+									{
+										"sequence": 2,
+										"objectReferences": [
+											{
+												"type": "functionalcomponent",
+												"objectGuid": "81205f7b-734b-4eb2-8c67-412d6d17a9ec",
+												"guid": "078d79af-883e-4f53-9faf-6690064fc88f"
+											}
+										],
+										"guid": "00c099f2-f294-4185-9e0c-e8181c395571"
+									},
+									{
+										"sequence": 3,
+										"objectReferences": [
+											{
+												"type": "functionalcomponent",
+												"objectGuid": "54a78ef2-4034-432f-8cde-2cb4c7c23d06",
+												"guid": "e7637108-2503-4337-8479-4fa64e9404ac"
+											}
+										],
+										"guid": "e7f7c0be-b4e7-4a6f-af26-603ef8ef0811"
+									},
+									{
+										"sequence": 4,
+										"objectReferences": [
+											{
+												"type": "functionalcomponent",
+												"objectGuid": "2c48bd4f-e98c-45bd-9ac0-2ec17c7fd031",
+												"guid": "f22b3439-17d6-48ad-add1-9a7a8808cac1"
+											}
+										],
+										"guid": "c1784853-12d7-4c0e-83a2-6b02365b6f5c"
+									},
+									{
+										"sequence": 5,
+										"objectReferences": [
+											{
+												"type": "functionalcomponent",
+												"objectGuid": "8d99bf36-4c52-4203-880e-d72b275c0428",
+												"guid": "47bfe239-1223-46e3-92d4-db7cf9ac46ab"
+											}
+										],
+										"guid": "2178efa1-0e07-47fa-b59e-ed7c23591dca"
+									}
+								],
+								"guid": "94e789cd-c640-461a-8193-5e862938667a"
+							},
+							"monitoring": {
+								"enable": false,
+								"enablePolicies": false,
+								"guid": "46f21901-9038-46c9-8b84-f17b635a34f4"
+							},
+							"guid": "7626a4de-f96f-472f-8006-17a9edd3044e"
+						},
+						"guid": "2ba0f3db-e020-4b60-819c-b43116cae8ff",
+						"name": "Definition 1",
+						"parameters": [
+							{
+								"parametername": "ADV_HOSTNAME_LIST",
+								"parameterlabel": "ADV_HOSTNAME_LIST",
+								"parameterdatatype": "string",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "59530c63-769b-45aa-9676-642c61979df4"
+							},
+							{
+								"parametername": "hostnameDMGR",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=DMGR]/ComputeContainer[0]/Server/hostName",
+								"metadata": "TokenType:Hostname|RS:0:DMGR:4d1d40be-55da-4923-a8b3-cc0aa2ee62f6|CI:0:0",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "a64bdc20-b63f-44b3-ab86-a20b5b58062a"
+							},
+							{
+								"parametername": "hostnameNode1",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=Node01]/ComputeContainer[0]/Server/hostName",
+								"metadata": "TokenType:Hostname|RS:1:Node01:9503633a-d138-4152-b2b7-78439f3ee89f|CI:0:0",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "624b4ac7-ab93-4116-92eb-a94ddd433801"
+							},
+							{
+								"parametername": "hostnameNode2",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=Node02]/ComputeContainer[0]/Server/hostName",
+								"metadata": "TokenType:Hostname|RS:2:Node02:848597a9-883e-4a62-ad53-83172007d3f9|CI:0:0",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "2649487f-2d7e-4a45-92c2-78429e21add3"
+							},
+							{
+								"parametername": "ipDMGR",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=DMGR]/ComputeContainer[0]/Server/ServerNetworkInterface[nicNumber=0]/IPAddress[isPublic=false]/ipAddress",
+								"metadata": "TokenType:IPAddress|RS:0:DMGR:4d1d40be-55da-4923-a8b3-cc0aa2ee62f6|CI:0:0|NIC:0:0|NAT:false",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "dd6c42b2-cf19-419a-a1c4-88032ad54c16"
+							},
+							{
+								"parametername": "ipNode1",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=Node01]/ComputeContainer[0]/Server/ServerNetworkInterface[nicNumber=0]/IPAddress[isPublic=false]/ipAddress",
+								"metadata": "TokenType:IPAddress|RS:1:Node01:9503633a-d138-4152-b2b7-78439f3ee89f|CI:0:0|NIC:0:0|NAT:false",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "a5d6850d-fe69-4a36-b093-0f0df797ce39"
+							},
+							{
+								"parametername": "ipNode2",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=Node02]/ComputeContainer[0]/Server/ServerNetworkInterface[nicNumber=0]/IPAddress[isPublic=false]/ipAddress",
+								"metadata": "TokenType:IPAddress|RS:2:Node02:848597a9-883e-4a62-ad53-83172007d3f9|CI:0:0|NIC:0:0|NAT:false",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "1d5449ab-a4f9-4f33-8acb-88981c24889a"
+							},
+							{
+								"parametername": "SPSS_CELLNAME",
+								"parameterlabel": "SPSS_CELLNAME",
+								"parameterdatatype": "string",
+								"parametervalue": "cell01",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "9497bcc6-7f49-4ba8-afd4-aa2966adb6e5"
+							},
+							{
+								"parametername": "SPSS_DBHOSTNAME",
+								"parameterlabel": "SPSS_DBHOSTNAME",
+								"parameterdatatype": "string",
+								"parametervalue": "HUSHUAI01",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "8e0ad7ed-818b-44d4-ad1e-c52935f877e0"
+							},
+							{
+								"parametername": "SPSS_DBPORT",
+								"parameterlabel": "SPSS_DBPORT",
+								"parameterdatatype": "string",
+								"parametervalue": "1521",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "0a35afdf-273b-4173-a64c-17ee1cf0ae02"
+							},
+							{
+								"parametername": "SPSS_DBUSER",
+								"parameterlabel": "SPSS_DBUSER",
+								"parameterdatatype": "string",
+								"parametervalue": "cds3",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "8f836a48-778e-46fc-b351-7060ecc29807"
+							},
+							{
+								"parametername": "SPSS_DMGR_CLUSTERNAME",
+								"parameterlabel": "SPSS_DMGR_CLUSTERNAME",
+								"parameterdatatype": "string",
+								"parametervalue": "spss_cluster01",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "81f1edf6-ab84-4463-85ae-6937a7a9be4d"
+							},
+							{
+								"parametername": "SPSS_DMGR_HOST",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=DMGR]/ComputeContainer[0]/Server/hostName",
+								"metadata": "TokenType:Hostname|RS:0:DMGR:4d1d40be-55da-4923-a8b3-cc0aa2ee62f6|CI:0:0",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "d56c9288-8250-4cda-b445-075ecf306b4e"
+							},
+							{
+								"parametername": "SPSS_DMGR_IP",
+								"parameterdatatype": "token",
+								"parametervalue": "/ResourceSet[name=DMGR]/ComputeContainer[0]/Server/ServerNetworkInterface[nicNumber=0]/IPAddress[isPublic=false]/ipAddress",
+								"metadata": "TokenType:IPAddress|RS:0:DMGR:4d1d40be-55da-4923-a8b3-cc0aa2ee62f6|CI:0:0|NIC:0:0|NAT:false",
+								"required": false,
+								"enduserinput": false,
+								"ishidden": false,
+								"guid": "124c2db8-eb77-44cd-a56a-c2330a41073e"
+							},
+							{
+								"parametername": "SPSS_DMGR_NAME",
+								"parameterlabel": "SPSS_DMGR_NAME",
+								"parameterdatatype": "string",
+								"parametervalue": "dmgr1",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "9bf6fd5c-0c0b-477c-8195-e856cd1fd62f"
+							},
+							{
+								"parametername": "SPSS_NODE1_APPSRV1",
+								"parameterlabel": "SPSS_NODE1_APPSRV1",
+								"parameterdatatype": "string",
+								"parametervalue": "appserver1011",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "d1b3bda8-e475-418f-92a5-28b08246516f"
+							},
+							{
+								"parametername": "SPSS_NODE1_APPSRV2",
+								"parameterlabel": "SPSS_NODE1_APPSRV2",
+								"parameterdatatype": "string",
+								"parametervalue": "appserver1021",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "5036d2c3-971c-4529-aac7-82266810787a"
+							},
+							{
+								"parametername": "SPSS_NODE2_APPSRV1",
+								"parameterlabel": "SPSS_NODE2_APPSRV1",
+								"parameterdatatype": "string",
+								"parametervalue": "appserver1111",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "c1f71070-707f-44f4-848c-b5ed7445e8b0"
+							},
+							{
+								"parametername": "SPSS_NODE2_APPSRV2",
+								"parameterlabel": "SPSS_NODE2_APPSRV2",
+								"parameterdatatype": "string",
+								"parametervalue": "appserver1121",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "7e940461-ba5f-4a89-8c2b-32bf630edbda"
+							},
+							{
+								"parametername": "SPSS_NODE1_PROFILENAME",
+								"parameterlabel": "SPSS_NODE1_PROFILENAME",
+								"parameterdatatype": "string",
+								"parametervalue": "profile01",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "c5448d30-1aee-4771-9503-50d02d05f938"
+							},
+							{
+								"parametername": "SPSS_NODE2_PROFILENAME",
+								"parameterlabel": "SPSS_NODE2_PROFILENAME",
+								"parameterdatatype": "string",
+								"parametervalue": "profile02",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "e195c042-863a-4cab-b1ee-289c5498fb3c"
+							},
+							{
+								"parametername": "SPSS_NODE1_NAME",
+								"parameterlabel": "SPSS_NODE1_NAME",
+								"parameterdatatype": "string",
+								"parametervalue": "node2",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "f57599e6-158a-49af-9c8e-e7aba460c480"
+							},
+							{
+								"parametername": "SPSS_NODE2_NAME",
+								"parameterlabel": "SPSS_NODE2_NAME",
+								"parameterdatatype": "string",
+								"parametervalue": "node3",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "2a47101e-8691-4591-95dc-7cb6351b134d"
+							},
+							{
+								"parametername": "SPSS_PASSWD",
+								"parameterlabel": "SPSS_PASSWD",
+								"parameterdatatype": "string",
+								"parametervalue": "mybasis0",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "b58bd1cc-25f8-4291-850e-af4d952c3b71"
+							},
+							{
+								"parametername": "SPSS_DBNAME",
+								"parameterlabel": "SPSS_DBNAME",
+								"parameterdatatype": "string",
+								"parametervalue": "cds",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "3f29feb1-75c3-4fb5-9264-bdefb8c7ac44"
+							},
+							{
+								"parametername": "SPSS_DB_IP",
+								"parameterlabel": "SPSS_DB_IP",
+								"parameterdatatype": "string",
+								"parametervalue": "10.27.192.47",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "1135afdb-7642-4a8a-853e-0f36c52d7ad3"
+							},
+							{
+								"parametername": "SPSS_NFS_SERVER_IP",
+								"parameterlabel": "SPSS_NFS_SERVER_IP",
+								"parameterdatatype": "string",
+								"parametervalue": "10.30.141.129",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "a7ca589b-747a-4d0c-a647-c5fff237e939"
+							},
+							{
+								"parametername": "SPSS_NFS_PATH",
+								"parameterlabel": "SPSS_NFS_PATH",
+								"parameterdatatype": "string",
+								"parametervalue": "/media",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "bf56e8c3-d90d-4967-964f-28a115a0ec48"
+							},
+							{
+								"parametername": "SPSS_NFS_SERVER_PATH",
+								"parameterlabel": "SPSS_NFS_SERVER_PATH",
+								"parameterdatatype": "string",
+								"parametervalue": "10.30.141.129:/media",
+								"required": true,
+								"enduserinput": true,
+								"ishidden": false,
+								"guid": "2ed5f318-2ab5-470f-84a7-e8ff73103665"
+							}
+						]
+					}
+				],
+				"guid": "c17e47f4-23ce-424b-976e-b5108e66fe16"
+			},
+			"guid": "6a2f2080-dd06-476f-be9f-67579febbf51"
+		}
+	],
+	"productCatalogEntries": [
+		{
+			"productId": "PDC000000012333",
+			"productName": "PaaS_PRD_SPSS_CDS_Node",
+			"manufacturer": "IBM",
+			"tier1": "Software Distribution",
+			"tier2": "Application",
+			"tier3": "BladeLogic",
+			"guid": "4af9c878-f848-4ded-9ee5-55c9ff3381c5"
+		},
+		{
+			"productId": "PDC000000012332",
+			"productName": "PaaS_PRD_SPSS_CDS_DMGR",
+			"manufacturer": "IBM",
+			"tier1": "Software Distribution",
+			"tier2": "Application",
+			"tier3": "BladeLogic",
+			"guid": "cffc8430-ffe9-46af-b128-990587038e07"
+		},
+		{
+			"productId": "PDC000000012227",
+			"productName": "Iass_rhel6.5_x64",
+			"manufacturer": "vmware",
+			"tier1": "Software Distribution",
+			"tier2": "VM Template",
+			"tier3": "BladeLogic",
+			"guid": "b2756e57-31b3-4749-af8e-34d20aab9d16"
+		},
+		{
+			"productId": "PDC000000012341",
+			"productName": "PaaS_PRD_SPSS_CDS_Node_2",
+			"manufacturer": "IBM",
+			"tier1": "Software Distribution",
+			"tier2": "Application",
+			"tier3": "BladeLogic",
+			"guid": "7e0608ed-be98-4ef1-b99c-3f43f2927ff4"
+		},
+		{
+			"productId": "PDC000000012342",
+			"productName": "PaaS_PRD_SPSS_CDS_Cluster",
+			"manufacturer": "IBM",
+			"tier1": "Software Distribution",
+			"tier2": "Application",
+			"tier3": "BladeLogic",
+			"guid": "a3a60aa5-0129-4f82-aab1-53e0cb9ef618"
+		}
+	],
+	"guid": "3131baca-12dc-4865-b9cb-9b01388bf081"
+}
