@@ -1,6 +1,13 @@
-== Print Param GUID from Exported BP json File ==
+  bp_param_extracter
+=====================================================
 
-== Usage
+Usage
+------
 
-* input = export json file name
-* output = csv file, file name  = bp name + timestamp
+python  bp_param_extracter.py <bp export file>
+
+*input* 
+export json file name
+
+*output* 
+csv file, file name  = bp name + timestamp
