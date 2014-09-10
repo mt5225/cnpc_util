@@ -8,8 +8,8 @@ bp_param_extracter
 *usage*
 python  bp_param_extracter.py [bp export file]
 
-*input* 
+*[input]* 
 export json file name
 
-*output* 
+*[output]* 
 csv file, file name  = bp name + timestamp
