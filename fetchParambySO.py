@@ -2,8 +2,7 @@
 # -*- coding: ISO-8859-1 -*-
 
 # Pyhton  imports
-import json
-import sys
+import json,sys
 
 # Project imports
 from com.bmc.cloud.sdk.apiutils.utils import *
@@ -20,14 +19,17 @@ from com.bmc.cloud.model.beans.BlueprintReference import BlueprintReference
 # get logger 
 log = SDKLogger().getLogger("serviceutils")
 
+__CSM_URL__ = "http://clm-pm.bmc.local:7070/csm"
+__CSM_USER__ = "CloudAdmin"
+__CSM_PASSWD__ = "password"
 
-def saveParamToCSV(bp_name, params):
+def saveParamToCSV(bp_name, blueprintDocGUID, versionNumber, params):
      #get time stamp
-    millis = str(int(round(time.time() * 1000)))
 
     #open output file for writting
-    param_file = open(bp_name + "_" + millis + ".csv", "w")
+    param_file = open("%s_v%d_%s.csv" %(bp_name, versionNumber, blueprintDocGUID), "w")
     param_file.write("BP_NAME,PARAM_NAME,PARAM_GUID" + "\n")
+    print "[[[%s %s]]]" % (bp_name, blueprintDocGUID)
 
     for param in params:
         msg_body = "%s,%s,%s" % (bp_name, param["parametername"], param["guid"])
@@ -62,20 +64,24 @@ if (__name__ == "__main__"):
     so_name = sys.argv[1]
 
     #login to csm
-    gcac = login("http://clm-pm.bmc.local:7070/csm", "CloudAdmin", "password")
+    gcac = login(__CSM_URL__, __CSM_USER__, __CSM_PASSWD__)
     
     # Search blueprintdoc for given blueprint name.
     searchParams = {'blueprint.guid':getBlueprintBysoName(gcac, so_name)}
     searchResults = searchCloudObjects(gcac, BlueprintDocument().cloudClass, **searchParams)
     if searchResults.totalRows:
-        blueprintDocumentobj = searchResults.results[0]
-        blueprintName = blueprintDocumentobj.name  ## Get Blueprint guid from document object.
-        blueprintDocGUID = blueprintDocumentobj.getGuid()
-        log.debug("", "action", "Found blueprintDocGUID %s" %blueprintDocGUID) 
+        for blueprintDocumentobj in searchResults.results:
+            blueprintName = blueprintDocumentobj.name  ## Get Blueprint guid from document object.
+            blueprintDocGUID = blueprintDocumentobj.getGuid()
+            log.debug("", "action", "Found blueprintDocGUID %s" %blueprintDocGUID) 
+            versionNumber = blueprintDocumentobj.versionNumber
+            blueprintContent = json.loads(blueprintDocumentobj.content)
+            try :
+                params = blueprintContent["configurations"][0]["parameters"]
+                saveParamToCSV(blueprintName, blueprintDocGUID, versionNumber, params)
+                time.sleep(1)
+            except Exception: 
+                pass
     else:
         raise CloudSDKException("There is no blueprint found with name [%s]" %blueprintName)
 
-    #return all params
-    blueprintContent = json.loads(blueprintDocumentobj.content)
-    params = blueprintContent["configurations"][0]["parameters"]
-    saveParamToCSV(blueprintName, params)
