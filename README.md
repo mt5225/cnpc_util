@@ -26,9 +26,11 @@ fetchParambySO
 - add python to env path
 - add python/scripts to env path
 - modify fetchParambySO, change
+ ``` 
 __CSM_URL__ = "http://clm-pm.bmc.local:7070/csm"
 __CSM_USER__ = "CloudAdmin"
 __CSM_PASSWD__ = "password"
+ ``` 
   to you clm setting
 - enjoy !
 
