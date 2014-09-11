@@ -74,7 +74,7 @@ if (__name__ == "__main__"):
     searchResults = searchCloudObjects(gcac, BlueprintDocument().cloudClass, **searchParams)
     if searchResults.totalRows:
         for blueprintDocumentobj in searchResults.results:
-            blueprintName = blueprintDocumentobj.name  ## Get Blueprint guid from document object.
+            blueprintName = blueprintDocumentobj.name  
             blueprintDocGUID = blueprintDocumentobj.getGuid()
             log.debug("", "action", "Found blueprintDocGUID %s" %blueprintDocGUID) 
             versionNumber = blueprintDocumentobj.versionNumber
