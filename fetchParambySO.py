@@ -37,7 +37,7 @@ def saveParamToCSV(bp_name, blueprintDocGUID, versionNumber, params):
         param_file.write(msg_body + "\n")
 
 def getBlueprintBysoName(gcac,so_name):
-    # Search blueprintdoc for given blueprint name.
+    # Search blueprintref for given service offerring name.
     searchParams = {'name':so_name}
     searchResults = searchCloudObjects(gcac, ServiceOffering().cloudClass, **searchParams)
     
@@ -49,24 +49,27 @@ def getBlueprintBysoName(gcac,so_name):
     bpref_guid = soObject.blueprintReference.split('/')[-1]
     searchParams = {'guid': bpref_guid}
     
+    # Search blueprint guid for given blueprintref
     searchResults = searchCloudObjects(gcac, BlueprintReference().cloudClass, **searchParams)
     if searchResults.totalRows:
         soObject = searchResults.results[0]
     else:
         raise CloudSDKException("There is no blueprint found ")
     
+    # get blueprint guid 
     bp_guid = searchResults.results[0].blueprint.split('/')[-1]
     log.debug( "", "action", "Found Blueprint guid %s" %bp_guid)
     return bp_guid
 
 
 if (__name__ == "__main__"):
+    # read service offerring name from user input
     so_name = sys.argv[1]
 
     #login to csm
     gcac = login(__CSM_URL__, __CSM_USER__, __CSM_PASSWD__)
     
-    # Search blueprintdoc for given blueprint name.
+    # Search blueprintdoc 
     searchParams = {'blueprint.guid':getBlueprintBysoName(gcac, so_name)}
     searchResults = searchCloudObjects(gcac, BlueprintDocument().cloudClass, **searchParams)
     if searchResults.totalRows:
