@@ -24,7 +24,7 @@ python fetchParambySO.py "Apache - RedHat 5.8"
 *[output]* 
 - csv, file name  = bp name + timestamp
 
-*howto deploy in windows 2008*
+*[howto deploy in windows 2008]*
 - install python 2.7.8 from python.org
 - extract Python27.csm.zip to an temp folder
 - copy folder __Lib\site-packages__, __scripts__ to python install dir
@@ -42,7 +42,7 @@ __CSM_PASSWD__ = "password"
 
 - enjoy !
 
-*referance*
+*[referance]*
 - https://docs.bmc.com/docs/display/public/clm41/Software+Development+Kit
 
 =====================line break========================
