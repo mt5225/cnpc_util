@@ -24,9 +24,8 @@ __CSM_USER__ = "CloudAdmin"
 __CSM_PASSWD__ = "password"
 
 def saveParamToCSV(bp_name, blueprintDocGUID, versionNumber, params):
-     #get time stamp
 
-    #open output file for writting
+    #open output file for writting, filename as: bp_name, version number, guid
     param_file = open("%s_v%d_%s.csv" %(bp_name, versionNumber, blueprintDocGUID), "w")
     param_file.write("BP_NAME,PARAM_NAME,PARAM_GUID" + "\n")
     print "[[[%s %s]]]" % (bp_name, blueprintDocGUID)
@@ -76,7 +75,7 @@ if (__name__ == "__main__"):
         for blueprintDocumentobj in searchResults.results:
             blueprintName = blueprintDocumentobj.name  
             blueprintDocGUID = blueprintDocumentobj.getGuid()
-            log.debug("", "action", "Found blueprintDocGUID %s" %blueprintDocGUID) 
+            log.debug("", "action", "Found blueprintDocGUID %s" %blueprintDocGUID)
             versionNumber = blueprintDocumentobj.versionNumber
             blueprintContent = json.loads(blueprintDocumentobj.content)
             try :
